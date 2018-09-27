@@ -304,10 +304,7 @@ endfunction
 
 
 function! s:write_pastebuffer_tmux(lines)
-  let _ = tempname()
-  call writefile(a:lines, _, 'b')
-  call system('tmux load-buffer ' . shellescape(_))
-  call delete(_)
+  call system('tmux load-buffer -', a:lines)
   return
 endfunction
 
